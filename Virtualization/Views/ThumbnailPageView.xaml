@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="Virtualization.Views.ThumbnailPageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cal="http://www.caliburnproject.org"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Border Background="Transparent" Margin="5">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Border>
+                <Image Source="{Binding Image}"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Loaded">
+                            <cal:ActionMessage MethodName="PageLoaded">
+                            </cal:ActionMessage>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Image>
+            </Border>
+            <Label Grid.Row="1" Margin="0" Foreground="#FFC000" FontSize="25" FontFamily="Segoe UI" Content="{Binding PageNumber}"
+                                   HorizontalAlignment="Center" />
+        </Grid>
+    </Border>
+</UserControl>
